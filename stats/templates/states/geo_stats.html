@@ -8,6 +8,10 @@
         body {
             background: #ccc;
         }
+        .lb-number {
+            font-family: Tahoma !important;
+            color: white !important;
+        }
     </style>
     <link href="{% static 'portal/stats/css/iranmap.min.css' %}"
           rel="stylesheet" type="text/css"/>
@@ -186,8 +190,15 @@
     $('path').on('click', function (e) {
         let stateCssId = $(this).attr('class')
         $('a[data-lightbox=' + stateCssId + ']').first().click()
-
     })
 </script>
+
+<script>
+    lightbox.option({
+        'alwaysShowNavOnTouchDevices': true,
+        'albumLabel': 'تصویر %1 از %2'
+    })
+</script>
+
 </body>
 </html>
