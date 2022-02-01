@@ -4,6 +4,7 @@
 <head>
     <title>همکاشت</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     <style type="text/css">
         body {
             background: #ccc;
@@ -13,7 +14,7 @@
             color: white !important;
         }
     </style>
-    <link href="{% static 'portal/stats/css/iranmap.min.css' %}"
+    <link href="{% static 'portal/stats/css/iranmap.css' %}"
           rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{% static 'portal/libraries/lightbox/css/lightbox.css' %}">
     <script type="text/javascript"
@@ -199,6 +200,10 @@
         'albumLabel': 'تصویر %1 از %2'
     })
 </script>
-
+<script>
+    $(document).ready(function () {
+        window.dispatchEvent(new Event('resize'));
+    })
+</script>
 </body>
 </html>
