@@ -4,13 +4,14 @@
 <head>
     <title>همکاشت</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
     <style type="text/css">
         body {
             background: #ccc;
         }
+
         .lb-number {
-            font-family: Tahoma !important;
+            font-family: Anjoman, Tahoma !important;
             color: white !important;
         }
     </style>
@@ -21,8 +22,24 @@
             src="{% static 'portal/stats/js/jquery-2.1.0.min.js' %}"></script>
     <script type="text/javascript"
             src="{% static 'portal/stats/js/iranmap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'portal/libraries/boostrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'portal/libraries/animate/animate.min.css' %}"/>
+
 </head>
 <body>
+<div class="container text-center title-section">
+    <div class="row mt-3">
+        <div class="col-md-4"><h3>درختان کاشته شده: ۲۸۷۹۵</h3></div>
+        <div class="col-md-4"><h2>«گزارش کمپین همکاشت»</h2></div>
+        <div class="col-md-4"><h3>درختان درحال کاشت:۴۴۴۰</h3></div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            برای اطلاع از نحوه کاشت و شرایط نگهداری از درختان می‌توانید منشور کاشت #همکاشت را مطالعه کنید
+        </div>
+    </div>
+</div>
 
 <div id="IranMap" class="clear">
 
@@ -150,20 +167,23 @@
             <li class="province"><span>استانها</span>
                 <ul>
                     {% for state in states %}
-                        <li class="{{ state.css_id }}" id="{{ state.id }}" data-class="state-item">
-                            <a href="#{{ state.css_id }}">
-                                {{ state.name }}: {{ state.number_of_trees }} درخت</a>
-                            <div style="display: none">
-                                {% for image in state.images.all %}
-                                    <a href="{{ image.file.url }}"
-                                       data-lightbox="{{ state.css_id }}"></a>
-                                {% endfor %}
-                            </div>
-                        </li>
+                        {% if state.images.all %}
+                            <li class="{{ state.css_id }}" id="{{ state.id }}" data-class="state-item">
+                                <a href="#{{ state.css_id }}">
+                                    {{ state.name }}: {{ state.number_of_trees }} درخت</a>
+                                <div style="display: none">
+                                    {% for image in state.images.all %}
+                                        <a href="{{ image.file.url }}"
+                                           data-lightbox="{{ state.css_id }}"></a>
+                                    {% endfor %}
+                                </div>
+                            </li>
+                        {% endif %}
                     {% endfor %}
                 </ul>
             </li>
-            <li class="island"><span>جزایر</span>
+
+            <li class="island" style="visibility: hidden"><span>جزایر</span>
                 <ul>
                     <li class="abu-musa"><a href="#abu-musa">ابو موسی</a></li>
                     <li class="qeshm"><a href="#qeshm">قشم</a></li>
@@ -183,10 +203,11 @@
             </li>
         </ul>
     </div>
-
 </div>
 
 <script type="text/javascript" src="{% static 'portal/libraries/lightbox/js/lightbox.js' %}"></script>
+<script src="{% static 'portal/libraries/boostrap/js/bootstrap.bundle.min.js' %}"></script>
+
 <script>
     $('path').on('click', function (e) {
         let stateCssId = $(this).attr('class')
@@ -197,12 +218,14 @@
 <script>
     lightbox.option({
         'alwaysShowNavOnTouchDevices': true,
-        'albumLabel': 'تصویر %1 از %2'
+        'albumLabel': 'تصویر %1 از %2',
+        'wrapAround': true
     })
 </script>
 <script>
     $(document).ready(function () {
         window.dispatchEvent(new Event('resize'));
+        $('.lb-number').addClass('animate__animated animate__headShake animate__repeat-3')
     })
 </script>
 </body>
