@@ -8,8 +8,8 @@
     url('../../fonts/Anjoman-Regular.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
 }
 
-.title-section {
-    font-family: Anjoman, Tahoma;
+.title-section, footer {
+    font-family: Anjoman, Tahoma !important;
 }
 
 #IranMap{
