@@ -10,6 +10,7 @@
 
 .title-section, footer {
     font-family: Anjoman, Tahoma !important;
+    color: #414472
 }
 
 #IranMap{
@@ -56,13 +57,13 @@
     fill: #fff;
 }
 #IranMap .map .province path{
-    fill: #999;
+    fill: #666666;
 }
 #IranMap .map .sea path, #IranMap .map .lake path{
-    fill: #6caed8;
+    fill: #00aacb;
 }
 #IranMap .map .province path:hover, #IranMap .map .island path:hover, #IranMap .map .province path.hover, #IranMap .map .island path.hover{
-    fill: #c33a2c !important;
+    fill: #72bd44 !important;
     cursor: pointer;
 }
 
@@ -81,7 +82,7 @@
     list-style: none;
 }
 #IranMap .list span{
-    background: #242424;
+    background: #2f8b90;
     color: #ecf0f1;
     display: block;
     padding: 0 8px;
@@ -94,7 +95,7 @@
     width: 33.33333333333333%;
 }
 #IranMap .list li ul li a{
-    background: #34495e;
+    background: #00a090;
     color: #ecf0f1;
     display: block;
     padding: 0 8px;
@@ -103,7 +104,7 @@
     text-decoration: none;
 }
 #IranMap .list li ul li a:hover, #IranMap .list li ul li a.hover{
-    background: #c33a2c;
+    background: #72bd44;
 }
 #IranMap .list ul:before, #IranMap .list ul:after{
     display: table;
