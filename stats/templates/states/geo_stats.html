@@ -166,7 +166,8 @@
                     {% for state in states %}
                         {% if state.images.all %}
                             <li class="{{ state.css_id }}" id="{{ state.id }}" data-class="state-item">
-                                <a href="#{{ state.css_id }}">
+                                <a href="#{{ state.css_id }}" data-item="state"
+                                   data-class="{{ state.css_id }}">
                                     {{ state.name }}: {{ state.number_of_trees }} درخت</a>
                                 <div style="display: none">
                                     {% for image in state.images.all %}
@@ -213,6 +214,12 @@
 <script>
     $('path').on('click', function (e) {
         let stateCssId = $(this).attr('class')
+        $('a[data-lightbox=' + stateCssId + ']').first().click()
+    })
+
+    $('a[data-item=state]').on('click', function (e) {
+        e.preventDefault();
+        let stateCssId = $(this).attr('data-class')
         $('a[data-lightbox=' + stateCssId + ']').first().click()
     })
 </script>
